@@ -1,0 +1,43 @@
+@import '../vars'
+
+.note-card
+  display: flex
+  flex-direction: column
+  background-color: $note-card-background
+  border-radius: $card-border-radius
+  color: $theme-white
+  padding: 24px
+  height: 200px
+  position: relative
+  overflow: hidden
+  transition: .3s all ease-in-out
+  &:hover
+    background-color:  lighten($note-card-background, 5%)
+    .note-card__edit,
+    .note-card__comments
+      transform: translate(0)
+
+  &__name
+    margin-bottom: 12px
+    font-weight: 700
+    text-overflow: ellipsis
+    white-space: nowrap
+    overflow: hidden
+    max-width: 240px
+
+  &__content
+    max-height: 116px
+    overflow: hidden
+    max-width: 240px
+    
+  &__edit
+    position: absolute
+    bottom: 24px
+    right: 24px
+    transform: translateX(150%)
+
+  &__comments
+    position: absolute
+    right: 86px
+    bottom: 24px
+    transform: translateY(150%)

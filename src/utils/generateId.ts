@@ -1,0 +1,1 @@
+export const generateId = () =>  (+new Date()).toString(16)

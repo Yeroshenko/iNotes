@@ -1,0 +1,43 @@
+@import '../vars'
+
+.button
+  display: flex
+  align-items: center
+  justify-content: center
+  background-color: $button-default-color
+  color: $typography-white-color
+  transition: .3s all ease-in-out
+  border-radius: $base-border-radius
+  padding: 14px 24px
+
+  &:hover
+    background-color: lighten($button-default-color, 15%)
+
+  &:active
+    transform: scale(0.96)
+
+  &:focus
+    outline: 0
+    //box-shadow: 0 0 3px 4px rgba($button-default-color, .2)
+
+  svg
+    font-size: 24px
+    width: 1em
+    height: 1em
+    fill: currentColor
+
+  &--circle
+    padding: 12px
+    border-radius: 50%
+
+  &--disabled
+    pointer-events: none
+    opacity: 0.7
+
+
+  &--secondary
+    background-color: $theme-white
+    color: $typography-color
+
+    &:hover
+      background-color: darken($theme-white, 15%)

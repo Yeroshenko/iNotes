@@ -1,0 +1,41 @@
+@import '../vars'
+
+.input-radio
+  display: flex
+  padding-left: 40px
+  font-size: 24px
+  position: relative
+  cursor: pointer
+
+  span
+    &:hover
+      &::before
+        border-color: $checked-radio-background
+
+    &::before,
+    &::after
+      content: ''
+      position: absolute
+      left: 0
+      top: 50%
+      transform: translateY(-50%)
+      width: 24px
+      height: 24px
+      border-radius: 50%
+      transition: .3s all ease-in-out
+
+    &::before
+      border: 1px solid $theme-dark
+
+    &::after
+      opacity: 0
+      border: 1px solid $checked-radio-background
+      background-color: $checked-radio-background
+
+  input
+    opacity: 0
+    visibility: hidden
+    position: absolute
+
+.input-radio input:checked + span::after
+  opacity: 1
