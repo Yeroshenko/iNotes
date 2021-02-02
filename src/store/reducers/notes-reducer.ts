@@ -1,4 +1,3 @@
-import { Dispatch } from 'redux'
 import { ThunkAction } from 'redux-thunk'
 
 import { AppState } from '../index'
@@ -47,6 +46,7 @@ export const notesReducer = (state = initialState, action: Actions): InitialStat
   }
 }
 
+
 type SetIsFetching = { type: typeof SET_IS_FETCHING, isFetching: boolean }
 type SetNotes = { type: typeof SET_NOTES, notes: Notes }
 type SetNote = { type: typeof SET_NOTE, note: Note }
@@ -59,7 +59,6 @@ export const setCurrentNote = (note: Note): SetCurrentNote => ({ type: SET_CURRE
 export const setIsFetching = (isFetching: boolean): SetIsFetching => ({ type: SET_IS_FETCHING, isFetching })
 
 
-// type DispatchType = Dispatch<Actions>
 type ThunkType = ThunkAction<Promise<void>, AppState, unknown, Actions>
 
 export const getNotes = (): ThunkType => {
@@ -80,6 +79,13 @@ export const createNote = (note: Note): ThunkType => {
     const newNote = await currentService.createNote(note) as Note
 
     dispatch(setNote(newNote))
+  }
+}
+
+export const updateCurrentNote = (noteId: string, data: NoteWithoutId): ThunkType => {
+  return async (dispatch, getState) => {
+    const currentService = getState().service.service
+    await currentService.updateNote(noteId, data)
   }
 }
 

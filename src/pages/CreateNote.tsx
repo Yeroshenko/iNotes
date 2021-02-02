@@ -16,13 +16,9 @@ const schema = yup.object().shape({
 })
 
 export const CreateNote: FC = () => {
-  const [isFetching, setIsFetching] = useState(false)
   const dispatch = useDispatch()
-
-  const { register, handleSubmit, errors, reset } = useForm({
-    mode: 'onBlur',
-    resolver: yupResolver(schema)
-  })
+  const [isFetching, setIsFetching] = useState(false)
+  const { register, handleSubmit, errors, reset } = useForm({ mode: 'onBlur', resolver: yupResolver(schema) })
 
   const formSubmit = async (data: Note) => {
     setIsFetching(true)

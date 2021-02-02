@@ -10,7 +10,6 @@ import { InputRadio } from 'components'
 
 import 'styles/pages/settings.sass'
 
-
 export const Setting: FC = () => {
   const dispatch = useDispatch()
   const currentServiceName = useSelector((state: AppState) => state.service.service.name)

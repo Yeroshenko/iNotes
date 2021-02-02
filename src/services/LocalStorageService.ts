@@ -5,11 +5,7 @@ export class LocalStorageService {
   name = LOCALSTORAGE
 
   createNote(data: Note) {
-    const newData = {
-      ...data,
-      id: generateId()
-    }
-
+    const newData = { ...data, id: generateId() }
     const prevList = this.getAllNotes()
     const newList = [...prevList, newData]
 
@@ -30,6 +26,21 @@ export class LocalStorageService {
     return currentNote[0]
   }
 
+  updateNote(noteId: string, data: NoteWithoutId) {
+    const allNotes = this.getAllNotes()
+
+    const newList = allNotes.map((note: Note) => {
+      if (note.id === noteId) {
+        return { ...note, ...data }
+      } else {
+        return note
+      }
+    })
+
+    localStorage.setItem('notes', JSON.stringify(newList))
+  }
+
+
   getAllComments() {
     const storageData = localStorage.getItem('comments')
 
@@ -42,7 +53,7 @@ export class LocalStorageService {
     return allComments.filter((i: Note) => i.id === noteId)
   }
 
-  setComment(comment: Comment) {
+  createComment(comment: CommentWithoutId) {
     const newData = {
       ...comment,
       id: generateId()

@@ -3,7 +3,7 @@ import { LocalStorageService, FirebaseService } from 'services'
 const SET_SERVICE = 'SERVICE:SET_SERVICE'
 
 const initialState = {
-  service: new FirebaseService() as Service
+  service: new LocalStorageService() as Service
 }
 
 type Actions = SetFirebaseService | SetLocalStorageService

@@ -10,6 +10,7 @@ type ButtonPros = {
   disabled?: boolean
   type?: 'primary' | 'secondary'
   htmlType?: 'submit' | 'button' | 'reset'
+  onClick?: () => void
 }
 
 export const Button: FC<ButtonPros> = (
@@ -20,7 +21,8 @@ export const Button: FC<ButtonPros> = (
     htmlType = 'button',
     type = 'primary',
     disabled = false,
-    children,
+    onClick,
+    children
   }
 ) => {
 
@@ -34,7 +36,7 @@ export const Button: FC<ButtonPros> = (
   )
 
   return (
-    <button className={classList} type={htmlType} disabled={disabled}>
+    <button className={classList} type={htmlType} disabled={disabled} onClick={onClick}>
       {children}
       {icon && icon}
     </button>

@@ -15,12 +15,11 @@ export const AllNotes: FC = () => {
 
   useEffect(() => {
     dispatch(getNotes())
-  }, [dispatch])
+  }, [])
 
   return (
     <BoardLayout title='All Notes'>
       <div className='all-notes'>
-
         {!notes.length && isFetching && <Loader /> }
 
         {!!notes.length &&
@@ -28,7 +27,6 @@ export const AllNotes: FC = () => {
             <NoteCard key={id} name={name} content={content} id={id} />
           )
         }
-
       </div>
     </BoardLayout>
   )

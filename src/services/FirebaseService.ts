@@ -17,6 +17,17 @@ export class FirebaseService {
       })
   }
 
+  updateNote(noteId: string, data: NoteWithoutId) {
+    return db
+      .collection('notes')
+      .doc(noteId)
+      .update(data)
+      .catch(error => {
+        console.error('Error updating document: ', error)
+      })
+  }
+
+
   getAllNotes() {
     return db
       .collection('notes')
@@ -41,7 +52,7 @@ export class FirebaseService {
   getComments(noteId: string) {
     return db
       .collection('comments')
-      .where('note_id', '==', noteId)
+      .where('noteId', '==', noteId)
       .get()
       .then<any>(snapshot => snapshot.docs.map(firebaseDocTransform))
       .catch(error => {
@@ -49,7 +60,7 @@ export class FirebaseService {
       })
   }
 
-  setComment(comment: Comment) {
+  createComment(comment: CommentWithoutId) {
     return db
       .collection('comments')
       .add(comment)

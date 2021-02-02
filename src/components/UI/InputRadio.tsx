@@ -13,18 +13,16 @@ type InputRadioProps = {
 }
 
 export const InputRadio: FC<InputRadioProps> = ({ className, label, name, value, onChange, checked }) => (
-  <>
-    <label className={cn('input-radio', className)}>
-      <input
-        type='radio'
-        className='input-radio-input'
-        name={name}
-        value={value}
-        checked={checked}
-        onChange={onChange}
-      />
-      <span />
-      {label}
-    </label>
-  </>
+  <label className={cn('input-radio', className)}>
+    <input
+      type='radio'
+      className='input-radio-input'
+      name={name}
+      value={value}
+      checked={checked}
+      onChange={onChange}
+    />
+    <span />
+    {label}
+  </label>
 )
